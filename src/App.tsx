@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Spline from '@splinetool/react-spline';
 import discordLogo from './assets/discord.svg'
 import './styles/App.scss'

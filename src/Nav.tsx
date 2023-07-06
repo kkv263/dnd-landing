@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './styles/Nav.scss'
 import smileLogo from './assets/smile.png'
 
