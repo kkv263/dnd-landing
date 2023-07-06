@@ -1,7 +1,10 @@
-import { useState } from 'react'
-import Spline from '@splinetool/react-spline';
+import React, { Suspense, useState } from 'react'
 import discordLogo from './assets/discord.svg'
+import Loader from './Loader';
 import './styles/App.scss'
+
+const Spline = React.lazy(() => import('@splinetool/react-spline'));
+
 
 const App = () => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
@@ -16,7 +19,9 @@ const App = () => {
         </div>
 
       </div>
-      <Spline className="hero__spline" scene="https://prod.spline.design/a4JOJ5ykgKwz7hOo/scene.splinecode" />
+      <Suspense fallback={<Loader />}>
+        <Spline className="hero__spline" scene="https://prod.spline.design/a4JOJ5ykgKwz7hOo/scene.splinecode" />
+      </Suspense>
       <div onClick={() => setTooltipVisible(!tooltipVisible)} className="hero__tooltip" role='tooltip' data-active={tooltipVisible}>
         <span className="hero__tooltip-question">?</span>
         <span className='hero__tooltip-content'>
