@@ -1,0 +1,23 @@
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+  padding: 8px;
+}
+
+.nav__logo {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Poppins, sans-serif;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+  img {
+    width: 48px;
+    margin-right: 16px;
+  }
+}
