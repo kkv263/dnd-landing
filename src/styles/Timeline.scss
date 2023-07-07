@@ -1,0 +1,35 @@
+.timeline {
+  background-color: #FFCA41;
+  position: relative;
+}
+
+.timeline__line {
+  position: absolute;
+  right: 64px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #111;
+}
+
+.timeline__section {
+  height: 100dvh;
+  padding: 64px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.timeline__headline {
+  font-size: 48px;
+}
+
+.timeline__content {
+
+}
+
+.timeline__description {
+  max-width: 480px;
+  font-size: 16px;
+}

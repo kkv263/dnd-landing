@@ -1,12 +1,11 @@
 import React, { Suspense, useState } from 'react'
 import discordLogo from './assets/discord.svg'
 import Loader from './Loader';
-import './styles/App.scss'
+import './styles/Hero.scss'
 
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
-
-const App = () => {
+const Hero = () => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   return (
     <section className="hero" > 
@@ -32,4 +31,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Hero
