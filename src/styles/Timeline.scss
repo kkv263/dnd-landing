@@ -10,6 +10,22 @@
   height: 100%;
   width: 2px;
   background-color: #111;
+
+  .timeline__step {
+    position: sticky;
+    top: 0;
+
+    &:after {
+      position: absolute;
+      right: 100%;
+      top: 0;
+      content: '';
+      background-color: #111;
+      width: 24px;
+      height: 24px;
+      border-radius: 100%;
+    }
+  }
 }
 
 .timeline__section {
