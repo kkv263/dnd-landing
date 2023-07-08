@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 
 
 const Timeline = () => {
-  const { ref, inView, entry } = useInView({
+  const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
   });
