@@ -3,6 +3,7 @@
   height: 100dvh;
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
 .hero__container {
@@ -163,5 +164,52 @@
     transition: opacity .3s ease 0s;
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+.hero__list {
+  list-style: none;
+  color: #fff;
+  padding-left: 0;
+  padding-bottom: 16px;
+  li {
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+  }
+
+  img {
+    max-width: 20px;
+    margin-right: 8px;
+  }
+}
+
+.scroll-down {
+    width: 24px;
+    height: 48px;
+    border: 3px solid #fff;
+    border-radius: 60px;
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    &::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      border-radius: 50%;
+      opacity: 1;
+      animation: wheel 2s infinite;
+    }
+}
+
+@keyframes wheel {
+  to {
+    opacity: 0;
+    top: 30px;
   }
 }
