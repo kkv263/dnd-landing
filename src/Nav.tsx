@@ -8,7 +8,7 @@ const Nav = () => {
       <div className="container">
         <div className="nav__logo">
           <img src={smileLogo} alt="" />
-          <span>dnd friends</span>
+          <span>d&d friends</span>
           </div>
       </div>
     </nav>

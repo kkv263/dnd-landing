@@ -149,6 +149,11 @@
   justify-content: flex-start;
   width: 100%;
   position: relative;
+
+  @media (max-width: 767px) {
+    height: 70dvh;
+    padding: 32px 0;
+  }
 }
 
 .timeline__section-top {
