@@ -116,6 +116,7 @@
   align-items: center;
   justify-content: center;
   transition: all .3s ease;
+  z-index: 2;
 
   @media (max-width: 767px) {
     width: 40px;
