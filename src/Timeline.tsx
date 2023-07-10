@@ -89,9 +89,10 @@ const Timeline = () => {
     },
   ]
 
+  const timeLineRef = useRef(null);
 
   return (
-    <section className="timeline">
+    <section className="timeline" ref={timeLineRef}>
       <div className="timeline__line" data-active={timelineActive}>
         { timeline.map((item, index) => (
           <button key={item.name} type="button" onClick={() => stepClick(index)} className={`timeline__step timeline__step--${item.name}`} data-inview={item.inViewObj}>
@@ -106,8 +107,8 @@ const Timeline = () => {
           key= {item.name}
           initial={{ opacity: 0, x: -200 }}
           whileInView={{ opacity: 1, x: 0}}
-          viewport={{ once: true, amount:.3 }}
-          transition={{delay: 0.5, duration:.5}}
+          viewport={{ once: true, root:(timelineRefs.current[index] as any), amount: .3}}
+          transition={{delay: 0.2, duration:.5}}
           className="timeline__section" id={item.name} ref={el => timelineRefs.current[index] = el}>
           {index === 0 ? (<div className="timeline__section-top" ref={item.ref}></div>) : ''}
           <div className="container">
