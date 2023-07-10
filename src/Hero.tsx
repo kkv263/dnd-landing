@@ -33,7 +33,7 @@ const Hero = () => {
       <div onClick={() => setTooltipVisible(!tooltipVisible)} className="hero__tooltip" role='tooltip' data-active={tooltipVisible}>
         <span className="hero__tooltip-question">?</span>
         <span className='hero__tooltip-content'>
-          {tooltipVisible ? 'You can roll the die by dragging it around! If you lose the die, press SPACE or refresh the page.' : ''}
+          {tooltipVisible ? 'You can roll the die by dragging it around! If you lose the die, press SPACE or refresh the page. This works better on desktop' : ''}
         </span>
       </div>
       <div className="scroll-down"></div>
