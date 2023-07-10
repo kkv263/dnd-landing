@@ -4,6 +4,7 @@ import usersSVG from './assets/users.svg'
 import botSVG from './assets/bot.svg'
 import saveSVG from './assets/save.svg'
 import Loader from './Loader';
+import { motion } from "framer-motion"
 import './styles/Hero.scss'
 
 
@@ -13,7 +14,11 @@ const Hero = () => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   return (
     <section className="hero" > 
-      <div className="hero__container">
+      <motion.div 
+        initial={{ opacity: 0  }}
+        animate={{ opacity: 1  }}
+        transition={{ duration: 1, delay: 2 }}
+        className="hero__container">
         <div className="container">
           <h1 className="hero__headline">hey friend,</h1>
           <div className="hero__subheadline">looking for a d&d server?</div>
@@ -26,7 +31,7 @@ const Hero = () => {
           <a className="hero__button" href="https://discord.gg/dndfriends"><img src={discordLogo} alt="discord logo" /> Join now</a>
         </div>
 
-      </div>
+      </motion.div>
       <Suspense fallback={<Loader />}>
         <Spline className="hero__spline" scene="https://prod.spline.design/a4JOJ5ykgKwz7hOo/scene.splinecode" />
       </Suspense>

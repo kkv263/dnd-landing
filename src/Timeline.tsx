@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import classImg from './assets/class.png';
 import partyImg from './assets/party.png';
 import playImg from './assets/play.png';
+import { motion } from "framer-motion"
 
 const Timeline = () => {
   const [ timelineActive, setTimelineActive] = useState(0);
@@ -53,55 +54,73 @@ const Timeline = () => {
     timelineRefs.current[index]?.blur();
   };
 
+  const timeline = [
+    {
+      name: 'create',
+      inViewObj: createInView,
+      text: 'create',
+      ref: createRef,
+      step: 'create a character',
+      description: 'Create one or many characters on the server using our custom discord bot! Play DnD with one character or switch between others. We support both Roll20 and Foundry games.',
+      img: classImg,
+      alt: '1 magician, 1 druid, and 1 rogue standing side by side'
+    },
+
+    {
+      name: 'party',
+      inViewObj: partyInView,
+      text: 'party up',
+      ref: partyRef,
+      step: 'form a party',
+      description: `Are you a player? Watch the quest board for upcoming one shots hosted by a DM. Maybe you're a dungeon master? Feel free to create your own one shot where others can sign up to play!`,
+      img: partyImg,
+      alt: 'female adventurer looking at quest board'
+    },
+
+    {
+      name: 'play',
+      inViewObj: playInView,
+      text: 'play',
+      ref: playRef,
+      step: 'slay some dragons',
+      description: `Once you've gotten your party together -- you're ready to slay some dragons (or hang out at an inn, we don't judge)! Gain experience and loot for your characters and take them to the next one shot!`,
+      img: playImg,
+      alt: 'adventurers gathered around a table at an inn'
+    },
+  ]
+
 
   return (
     <section className="timeline">
       <div className="timeline__line" data-active={timelineActive}>
-        <button type="button" onClick={() => stepClick(0)} className='timeline__step timeline__step--create' data-inview={createInView}>
-          <span className="timeline__text">create</span>
-          <span className="timeline__circle"></span>
-        </button>
-        <button type="button" onClick={() => stepClick(1)} className='timeline__step timeline__step--party' data-inview={partyInView}>
-          <span className="timeline__text">party up</span>
-          <span className="timeline__circle"></span>
-        </button>
-        <button type="button" onClick={() => stepClick(2)} className='timeline__step timeline__step--play' data-inview={playInView}>
-          <span className="timeline__text">play</span>
-          <span className="timeline__circle"></span>
-        </button>
-      </div>
-      <div className="timeline__section" id="create" ref={el => timelineRefs.current[0] = el}>
-      <div className="timeline__section-top" ref={createRef}></div>
-        <div className="container">
-          <div className="timeline__content">
-            <h2 className="timeline__headline"><span className="timeline__step-number">1</span> create a character</h2>
-            <div className="timeline__description">Create one or many characters on the server using our custom discord bot! Play DnD with one character or switch between others. We support both Roll20 and Foundry games.</div>
-            <img className="timeline__content-img" src={classImg} alt="1 magigcian, 1 druid, and 1 rogue standing side by side" />
-          </div>
-        </div>
+        { timeline.map((item, index) => (
+          <button key={item.name} type="button" onClick={() => stepClick(index)} className={`timeline__step timeline__step--${item.name}`} data-inview={item.inViewObj}>
+            <span className="timeline__text">{item.text}</span>
+            <span className="timeline__circle"></span>
+          </button>
+        )) }
       </div>
 
-      <div className="timeline__section" id="party" ref={el => timelineRefs.current[1] = el}>
-      <div className="timeline__section-top"></div>
-        <div className="container">
-          <div className="timeline__content">
-            <h2 className="timeline__headline" ><span className="timeline__step-number">2</span> form a party</h2>
-            <div className="timeline__description">Are you a player? Watch the quest board for upcoming one shots hosted by a DM. Maybe you're a dungeon master? Feel free to create your own one shot where others can sign up to play!</div>
-            <img className="timeline__content-img" ref={partyRef} src={partyImg} alt="female adventurer looking at quest board" />
+      { timeline.map((item, index) => (
+        <motion.div 
+          key= {item.name}
+          initial={{ opacity: 0, x: -200 }}
+          whileInView={{ opacity: 1, x: 0}}
+          viewport={{ once: true, amount:.3 }}
+          transition={{delay: 0.5, duration:.5}}
+          className="timeline__section" id={item.name} ref={el => timelineRefs.current[index] = el}>
+          {index === 0 ? (<div className="timeline__section-top" ref={item.ref}></div>) : ''}
+          <div className="container">
+            <div className="timeline__content">
+              <h2 className="timeline__headline"><span className="timeline__step-number">{index + 1}</span> {item.step}</h2>
+              <div className="timeline__description">{item.description}</div>
+              
+              {index !== 0 ? (<img className="timeline__content-img" ref={item.ref} src={item.img} alt={item.alt} />) : 
+              (<img className="timeline__content-img" src={item.img} alt={item.alt} />)}
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div className="timeline__section" id="play" ref={el => timelineRefs.current[2] = el}>
-      <div className="timeline__section-top"></div>
-        <div className="container">
-          <div className="timeline__content">
-            <h2 className="timeline__headline" ><span className="timeline__step-number">3</span> slay some dragons</h2>
-            <div className="timeline__description">Once you've gotten your party together -- you're ready to slay some dragons (or hang out at an inn, we don't judge)! Gain experience and loot for your characters and take them to the next one shot!</div>
-            <img className="timeline__content-img" ref={playRef} src={playImg} alt="" />
-          </div>
-        </div>
-      </div>
+        </motion.div>
+      )) }
     </section>
   )
 }
