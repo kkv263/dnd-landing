@@ -28,7 +28,7 @@ const Hero = () => {
             <li><img src={botSVG} alt="" /> custom discord bot ecosystem</li>
             <li><img src={saveSVG} alt="" /> use characters across one-shots</li>
           </ul>
-          <a className="hero__button" href="https://discord.gg/dndfriends"><img src={discordLogo} alt="discord logo" /> Join now</a>
+          <a className="hero__button" target="_blank" rel="noopener noreferrer" href="https://discord.gg/dndfriends"><img src={discordLogo} alt="discord logo" /> Join now</a>
         </div>
 
       </motion.div>

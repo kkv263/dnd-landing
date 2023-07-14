@@ -85,3 +85,29 @@
     }
   }
 }
+
+.footer__socials {
+  position: absolute;
+  bottom: 32px;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+
+  ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+    li:first-child {
+      margin-right: 16px;
+    }
+  }
+
+  img {
+    width: 32px;
+
+    @media (max-width: 767px) {
+      width: 24px;
+    }
+  }
+}
